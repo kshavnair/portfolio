@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0f0f0f">
+  <meta name="theme-color" id="theme-color-meta" content="#0f0f0f">
   <meta name="description" content="Keshav Nair - Portfolio">
   <title>Keshav Nair</title>
   <link rel="icon" href="photo.jpg.jpeg" type="image/jpeg">
@@ -20,6 +20,11 @@
     <a href="#education">Education</a>
     <a href="#experiments">Experiments</a>
     <a href="#certifications">Certifications</a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true">
+        <span class="theme-toggle-thumb"></span>
+      </span>
+    </button>
   </nav>
 
   <header class="hero">
@@ -89,30 +94,36 @@
     <section id="experiments" class="section section-wide">
       <h2>Experiments</h2>
       <div class="experiment-cards">
-        <a href="https://github.com/kshavnair/credit-approval" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+        <button type="button" class="exp-card exp-card-button" data-project="credit" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Explainable Credit Approval System</h3>
           <div class="exp-tech">Python · Pandas · Scikit-learn</div>
-        </a>
-        <a href="https://github.com/kshavnair/single-input-audio-separation" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="exp-action">Open case study</span>
+        </button>
+        <button type="button" class="exp-card exp-card-button" data-project="audio" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Cocktail Party Problem – Speech Separation</h3>
           <div class="exp-tech">Python · NumPy · Librosa</div>
-        </a>
-        <a href="https://github.com/kshavnair/RNG-Generator" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="exp-action">Open case study</span>
+        </button>
+        <button type="button" class="exp-card exp-card-button" data-project="rng" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Secure Seeded Key Generator</h3>
           <div class="exp-tech">Python · SHA-256 · hashlib <span class="exp-badge">IIT Roorkee</span></div>
-        </a>
-        <a href="https://github.com/kshavnair/Satellite-telemetry-anomaly" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="exp-action">Open case study</span>
+        </button>
+        <button type="button" class="exp-card exp-card-button" data-project="telemetry" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Telemetry Anomaly Detection</h3>
           <div class="exp-tech">Python · TensorFlow · PyTorch</div>
-        </a>
-        <a href="https://github.com/kshavnair/resume-analyse" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="exp-action">Open case study</span>
+        </button>
+        <button type="button" class="exp-card exp-card-button" data-project="resume" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>AI Resume Intelligence Web App</h3>
           <div class="exp-tech">FastAPI · JavaScript · ATS Scoring · LLM Rewriter</div>
-        </a>
-        <a href="https://github.com/kshavnair/marine-novelty" class="exp-card exp-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="exp-action">Open case study</span>
+        </button>
+        <button type="button" class="exp-card exp-card-button" data-project="marine" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Marine Species eDNA Novelty Detection</h3>
-          <div class="exp-tech">Python · FastAPI · StreamLit · React · PyTorch</div>
-        </a>
+          <div class="exp-tech">Python · FastAPI · Streamlit · React · PyTorch</div>
+          <span class="exp-action">Open case study</span>
+        </button>
       </div>
       <a href="https://github.com/kshavnair" class="btn" target="_blank" rel="noopener noreferrer">View all on GitHub</a>
     </section>
@@ -132,6 +143,46 @@
     <p><a href="mailto:kshav.nair@gmail.com">kshav.nair@gmail.com</a> · <a href="tel:+918851787814">+91 8851787814</a></p>
     <p>&copy; <span class="year"></span> Keshav Nair</p>
   </footer>
+
+  <div class="project-modal" id="project-modal" hidden>
+    <div class="project-modal-backdrop" data-close-modal></div>
+    <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-summary">
+      <button type="button" class="project-modal-close" aria-label="Close project details" data-close-modal>&times;</button>
+      <p class="project-kicker">Featured case study</p>
+      <h3 id="project-modal-title"></h3>
+      <p id="project-modal-summary" class="project-summary"></p>
+
+      <div class="project-detail-grid">
+        <section class="project-detail-card">
+          <h4>Vision</h4>
+          <p id="project-modal-vision"></p>
+        </section>
+
+        <section class="project-detail-card">
+          <h4>Program Flow</h4>
+          <figure class="project-flow-figure">
+            <ol class="project-flow" id="project-modal-flow"></ol>
+            <figcaption id="project-modal-flow-caption"></figcaption>
+          </figure>
+        </section>
+
+        <section class="project-detail-card">
+          <h4>Tech Stack</h4>
+          <div class="project-stack" id="project-modal-stack"></div>
+        </section>
+
+        <section class="project-detail-card">
+          <h4>Build Notes</h4>
+          <p id="project-modal-notes"></p>
+        </section>
+      </div>
+
+      <div class="project-actions">
+        <a href="#" class="btn" target="_blank" rel="noopener noreferrer" id="project-modal-link">View GitHub</a>
+        <button type="button" class="btn btn-secondary" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
