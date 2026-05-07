@@ -472,6 +472,7 @@ html[data-theme='light'] .theme-toggle-thumb {
   display: grid;
   place-items: center;
   padding: 1.25rem;
+  will-change: opacity;
 }
 
 .project-modal[hidden] {
@@ -482,7 +483,8 @@ html[data-theme='light'] .theme-toggle-thumb {
   position: absolute;
   inset: 0;
   background: var(--overlay);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
+  will-change: backdrop-filter;
 }
 
 .project-modal-panel {
@@ -498,6 +500,7 @@ html[data-theme='light'] .theme-toggle-thumb {
   transform: translateY(20px) scale(0.97);
   opacity: 0;
   transition: transform 0.22s ease, opacity 0.22s ease;
+  will-change: transform, opacity;
 }
 
 .project-modal.is-open .project-modal-panel {

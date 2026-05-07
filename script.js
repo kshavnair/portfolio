@@ -415,15 +415,6 @@ const renderProject = (projectKey) => {
 		modalStack.appendChild(pill);
 	});
 
-	window.setTimeout(() => {
-		buildDecryptTargets().forEach((target) => {
-			if (modal && modal.contains(target)) {
-				delete target.dataset.originalText;
-				target.classList.remove('decrypted', 'decrypting');
-				decryptText(target, 620);
-			}
-		});
-	}, 40);
 
 	return true;
 };
