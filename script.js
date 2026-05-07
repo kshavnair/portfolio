@@ -425,17 +425,10 @@ const openModal = () => {
 	}
 
 	modal.hidden = false;
-	document.body.classList.add('modal-animating');
-	
 	requestAnimationFrame(() => {
 		modal.classList.add('is-open');
 		document.body.classList.add('modal-open');
 	});
-
-	// Resume normal interaction after animation
-	window.setTimeout(() => {
-		document.body.classList.remove('modal-animating');
-	}, 250);
 };
 
 const closeModal = () => {
@@ -443,15 +436,12 @@ const closeModal = () => {
 		return;
 	}
 
-	document.body.classList.add('modal-animating');
 	modal.classList.remove('is-open');
 	document.body.classList.remove('modal-open');
-	
 	window.setTimeout(() => {
 		if (!modal.classList.contains('is-open')) {
 			modal.hidden = true;
 		}
-		document.body.classList.remove('modal-animating');
 	}, 250);
 };
 
@@ -508,13 +498,13 @@ if (projectCards.length > 0 && modal) {
 	});
 }
 
-// Initialize TargetCursor
-if (window.gsap && typeof createTargetCursor === 'function') {
-	createTargetCursor({
-		targetSelector: '.cursor-target',
-		spinDuration: 2,
-		hideDefaultCursor: true,
-		hoverDuration: 0.2,
-		parallaxOn: false
-	});
-}
+// TargetCursor disabled - using normal cursor for better performance
+// if (window.gsap && typeof createTargetCursor === 'function') {
+// 	createTargetCursor({
+// 		targetSelector: '.cursor-target',
+// 		spinDuration: 2,
+// 		hideDefaultCursor: true,
+// 		hoverDuration: 0.2,
+// 		parallaxOn: false
+// 	});
+// }

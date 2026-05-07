@@ -629,11 +629,6 @@ body.modal-open {
   overflow: hidden;
 }
 
-body.modal-animating .target-cursor-wrapper {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 .footer {
   text-align: center;
   padding: 3rem max(1rem, env(safe-area-inset-left)) max(3rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-right));
