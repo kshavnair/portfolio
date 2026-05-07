@@ -137,16 +137,17 @@ const renderSplashFrame = () => {
 	splashContext.globalCompositeOperation = 'source-over';
 };
 
-if (splashCanvas && splashContext && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-	resizeSplashCanvas();
-	window.addEventListener('resize', resizeSplashCanvas, { passive: true });
-	document.addEventListener('pointerdown', (event) => {
-		if (event.isPrimary === false) {
-			return;
-		}
-		createSplashBurst(event.clientX, event.clientY);
-	}, { passive: true, capture: true });
-}
+// Particle splash effect disabled for simplicity
+// if (splashCanvas && splashContext && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+// 	resizeSplashCanvas();
+// 	window.addEventListener('resize', resizeSplashCanvas, { passive: true });
+// 	document.addEventListener('pointerdown', (event) => {
+// 		if (event.isPrimary === false) {
+// 			return;
+// 		}
+// 		createSplashBurst(event.clientX, event.clientY);
+// 	}, { passive: true, capture: true });
+// }
 
 
 

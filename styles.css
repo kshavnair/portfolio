@@ -50,16 +50,6 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.splash-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.95;
-}
-
 .nav,
 .hero,
 .section,

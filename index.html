@@ -13,20 +13,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="GlareHover.css">
-  <link rel="stylesheet" href="TargetCursor.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-  <canvas id="splash-canvas" class="splash-canvas" aria-hidden="true"></canvas>
   <nav class="nav">
-    <a href="#about" class="cursor-target">About</a>
-    <a href="#tech-stack" class="cursor-target">Tech Stack</a>
-    <a href="#education" class="cursor-target">Education</a>
-    <a href="#experiments" class="cursor-target">Experiments</a>
-    <a href="#certifications" class="cursor-target">Certifications</a>
+    <a href="#about">About</a>
+    <a href="#tech-stack">Tech Stack</a>
+    <a href="#education">Education</a>
+    <a href="#experiments">Experiments</a>
+    <a href="#certifications">Certifications</a>
   </nav>
 
-  <button type="button" class="theme-toggle cursor-target" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
     <span class="theme-toggle-track" aria-hidden="true">
       <span class="theme-toggle-thumb"></span>
     </span>
@@ -42,16 +40,16 @@
         <p class="tagline">New Delhi, India</p>
       </div>
       <div class="hero-links">
-        <a href="mailto:kshav.nair@gmail.com" class="cursor-target" aria-label="Email">
+        <a href="mailto:kshav.nair@gmail.com" aria-label="Email">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/keshav-nair-606835334/" class="cursor-target" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/keshav-nair-606835334/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="https://github.com/kshavnair" class="cursor-target" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a href="https://github.com/kshavnair" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         </a>
-        <a href="https://instagram.com/kshavnair" class="cursor-target" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a href="https://instagram.com/kshavnair" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
       </div>
@@ -99,38 +97,38 @@
     <section id="experiments" class="section section-wide">
       <h2>Experiments</h2>
       <div class="experiment-cards">
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="credit" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="credit" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Explainable Credit Approval System</h3>
           <div class="exp-tech">Python · Pandas · Scikit-learn</div>
           <span class="exp-action">Open case study</span>
         </button>
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="audio" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="audio" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Cocktail Party Problem – Speech Separation</h3>
           <div class="exp-tech">Python · NumPy · Librosa</div>
           <span class="exp-action">Open case study</span>
         </button>
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="rng" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="rng" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Secure Seeded Key Generator</h3>
           <div class="exp-tech">Python · SHA-256 · hashlib <span class="exp-badge">IIT Roorkee</span></div>
           <span class="exp-action">Open case study</span>
         </button>
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="telemetry" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="telemetry" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Telemetry Anomaly Detection</h3>
           <div class="exp-tech">Python · TensorFlow · PyTorch</div>
           <span class="exp-action">Open case study</span>
         </button>
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="resume" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="resume" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>AI Resume Intelligence Web App</h3>
           <div class="exp-tech">FastAPI · JavaScript · ATS Scoring · LLM Rewriter</div>
           <span class="exp-action">Open case study</span>
         </button>
-        <button type="button" class="exp-card exp-card-button cursor-target" data-project="marine" aria-haspopup="dialog" aria-controls="project-modal">
+        <button type="button" class="exp-card exp-card-button" data-project="marine" aria-haspopup="dialog" aria-controls="project-modal">
           <h3>Marine Species eDNA Novelty Detection</h3>
           <div class="exp-tech">Python · FastAPI · Streamlit · React · PyTorch</div>
           <span class="exp-action">Open case study</span>
         </button>
       </div>
-      <a href="https://github.com/kshavnair" class="btn cursor-target" target="_blank" rel="noopener noreferrer">View all on GitHub</a>
+      <a href="https://github.com/kshavnair" class="btn" target="_blank" rel="noopener noreferrer">View all on GitHub</a>
     </section>
 
     <section id="certifications" class="section">
@@ -189,7 +187,6 @@
     </div>
   </div>
 
-  <script src="TargetCursor.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
