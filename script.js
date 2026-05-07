@@ -148,56 +148,7 @@ if (splashCanvas && splashContext && !window.matchMedia('(prefers-reduced-motion
 	}, { passive: true, capture: true });
 }
 
-const decryptCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=/';
-const decryptDuration = 1200;
-const activeDecryptions = new WeakMap();
 
-const decryptText = (element, duration = decryptDuration) => {
-	if (!element || !element.textContent) {
-		return;
-	}
-
-	const originalText = element.dataset.originalText ?? element.textContent;
-	element.dataset.originalText = originalText;
-	element.classList.add('decrypt-target', 'decrypting', 'decrypt-shimmer');
-
-	const characters = originalText.split('');
-	const startTime = performance.now();
-	let frameId = activeDecryptions.get(element);
-	if (frameId) {
-		cancelAnimationFrame(frameId);
-	}
-
-	const tick = (now) => {
-		const progress = Math.min((now - startTime) / duration, 1);
-		const revealCount = Math.floor(progress * characters.length);
-		const nextText = characters
-			.map((character, index) => {
-				if (character === ' ') {
-					return ' ';
-				}
-				if (index < revealCount) {
-					return character;
-				}
-				return decryptCharacters[Math.floor(Math.random() * decryptCharacters.length)];
-			})
-			.join('');
-
-		element.textContent = nextText;
-
-		if (progress < 1) {
-			activeDecryptions.set(element, requestAnimationFrame(tick));
-			return;
-		}
-
-		element.textContent = originalText;
-		element.classList.remove('decrypting');
-		element.classList.add('decrypted');
-		activeDecryptions.delete(element);
-	};
-
-	activeDecryptions.set(element, requestAnimationFrame(tick));
-};
 
 const getCardRevealTargets = (card) => {
 	return Array.from(card.querySelectorAll('h3, .exp-tech, .exp-action, .exp-badge, .exp-card-preview *')).filter((element) => {
@@ -211,65 +162,9 @@ const animateProjectCard = (card) => {
 		return 0;
 	}
 
-	card.classList.add('card-reveal', 'card-reveal-active');
-	const revealTargets = getCardRevealTargets(card);
-	revealTargets.forEach((target) => {
-		decryptText(target, 900);
-	});
-
-	window.setTimeout(() => {
-		card.classList.remove('card-reveal-active');
-	}, 900);
-
-	return 280;
+	// Project card animation without text decryption
+	return 0;
 };
-
-const buildDecryptTargets = () => {
-	return document.querySelectorAll([
-		'.section h2',
-		'.about-text',
-		'.experience-item h3',
-		'.experience-item .meta',
-		'.experience-item p',
-		'.cert-list li',
-		'.footer p:last-child',
-		'.project-modal h3',
-		'.project-summary',
-		'.project-detail-card h4',
-		'.project-detail-card p',
-		'.project-flow li',
-		'.project-flow figcaption',
-		'.project-stack span',
-		'.project-kicker'
-	].join(', '));
-};
-
-const setupDecryptReveal = () => {
-	const targets = Array.from(buildDecryptTargets());
-	if (targets.length === 0) {
-		return;
-	}
-
-	const observer = new IntersectionObserver((entries, observe) => {
-		entries.forEach((entry) => {
-			if (!entry.isIntersecting) {
-				return;
-			}
-
-			decryptText(entry.target);
-			observe.unobserve(entry.target);
-		});
-	}, {
-		threshold: 0.35,
-		rootMargin: '0px 0px -10% 0px'
-	});
-
-	targets.forEach((target) => {
-		observer.observe(target);
-	});
-};
-
-setupDecryptReveal();
 
 const themeToggle = document.getElementById('theme-toggle');
 const themeColorMeta = document.getElementById('theme-color-meta');
