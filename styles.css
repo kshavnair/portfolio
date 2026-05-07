@@ -483,8 +483,6 @@ html[data-theme='light'] .theme-toggle-thumb {
   position: absolute;
   inset: 0;
   background: var(--overlay);
-  backdrop-filter: blur(4px);
-  will-change: backdrop-filter;
 }
 
 .project-modal-panel {
