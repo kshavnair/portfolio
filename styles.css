@@ -495,8 +495,8 @@ html[data-theme='light'] .theme-toggle-thumb {
   padding: 2rem;
   border: 1px solid var(--panel-border);
   border-radius: 18px;
-  background: linear-gradient(180deg, var(--panel-bg), color-mix(in srgb, var(--panel-bg) 92%, var(--bg)));
-  box-shadow: var(--panel-shadow);
+  background: var(--panel-bg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   transform: translateY(20px) scale(0.97);
   opacity: 0;
   transition: transform 0.22s ease, opacity 0.22s ease;
@@ -627,6 +627,11 @@ html[data-theme='light'] .theme-toggle-thumb {
 
 body.modal-open {
   overflow: hidden;
+}
+
+body.modal-animating .target-cursor-wrapper {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .footer {
