@@ -499,13 +499,13 @@ if (projectCards.length > 0 && modal) {
 	});
 }
 
-// TargetCursor disabled - using normal cursor for better performance
-// if (window.gsap && typeof createTargetCursor === 'function') {
-// 	createTargetCursor({
-// 		targetSelector: '.cursor-target',
-// 		spinDuration: 2,
-// 		hideDefaultCursor: true,
-// 		hoverDuration: 0.2,
-// 		parallaxOn: false
-// 	});
-// }
+// TargetCursor re-enabled with improved performance settings
+if (window.gsap && typeof createTargetCursor === 'function') {
+	createTargetCursor({
+		targetSelector: '.cursor-target',
+		spinDuration: 2,
+		hideDefaultCursor: true,
+		hoverDuration: 0.2,
+		parallaxOn: false
+	});
+}

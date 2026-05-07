@@ -480,6 +480,7 @@ html[data-theme='light'] .theme-toggle-thumb {
   width: min(900px, 100%);
   max-height: min(88vh, 900px);
   overflow: auto;
+  overflow-y: scroll;
   padding: 2rem;
   border: 1px solid var(--panel-border);
   border-radius: 18px;
@@ -489,6 +490,11 @@ html[data-theme='light'] .theme-toggle-thumb {
   opacity: 0;
   transition: transform 0.22s ease, opacity 0.22s ease;
   will-change: transform, opacity;
+  scrollbar-width: none;
+}
+
+.project-modal-panel::-webkit-scrollbar {
+  display: none;
 }
 
 .project-modal.is-open .project-modal-panel {
