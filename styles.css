@@ -45,7 +45,27 @@ body {
   line-height: 1.6;
   font-size: 18px;
   min-height: 100vh;
+  position: relative;
+  isolation: isolate;
   -webkit-tap-highlight-color: transparent;
+}
+
+.splash-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.95;
+}
+
+.nav,
+.hero,
+.section,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -91,7 +111,10 @@ body {
 }
 
 .theme-toggle {
-  display: inline-flex;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
   align-items: center;
   min-height: 44px;
   padding: 0.25rem 0.35rem;
@@ -101,6 +124,7 @@ body {
   color: var(--text-muted);
   width: 3.4rem;
   justify-content: center;
+  z-index: 101;
 }
 
 .theme-toggle:hover {
@@ -260,6 +284,51 @@ html[data-theme='light'] .theme-toggle-thumb {
   transition: border-color 0.2s, transform 0.2s;
 }
 
+.decrypt-target {
+  will-change: opacity, filter, transform, letter-spacing;
+}
+
+.decrypting {
+  opacity: 0.72;
+  filter: blur(1.6px) saturate(0.75);
+  letter-spacing: 0.08em;
+}
+
+.decrypted {
+  opacity: 1;
+  filter: none;
+  letter-spacing: normal;
+}
+
+.decrypt-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.decrypt-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(201, 169, 98, 0.18) 45%, transparent 60%);
+  transform: translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.decrypting.decrypt-shimmer::after {
+  opacity: 1;
+  animation: decrypt-sweep 0.75s ease;
+}
+
+@keyframes decrypt-sweep {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
 .stack-pill:hover {
   border-color: var(--accent);
   transform: translateY(-1px);
@@ -308,6 +377,7 @@ html[data-theme='light'] .theme-toggle-thumb {
 }
 
 .exp-card {
+  position: relative;
   display: block;
   padding: 1.25rem 1.25rem;
   min-height: 72px;
@@ -317,7 +387,7 @@ html[data-theme='light'] .theme-toggle-thumb {
   border-radius: 6px;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -334,13 +404,39 @@ html[data-theme='light'] .theme-toggle-thumb {
 }
 
 .exp-card-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
 }
 
 .exp-card-button:hover,
 .exp-card-button:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
 }
+
+.exp-card-button.card-reveal {
+  overflow: hidden;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 0 1px rgba(201, 169, 98, 0.18), 0 0 24px rgba(201, 169, 98, 0.08), 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.exp-card-button.card-reveal::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 98, 0.26) 35%, transparent 70%);
+  opacity: 0;
+  transform: translateX(-120%);
+}
+
+.exp-card-button.card-reveal.card-reveal-active::after {
+  opacity: 1;
+  animation: decrypt-sweep 0.9s ease;
+}
+
+
 
 .exp-card-button:focus-visible,
 .btn:focus-visible,
@@ -686,5 +782,9 @@ body.modal-open {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .splash-canvas {
+    display: none;
   }
 }
