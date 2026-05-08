@@ -375,7 +375,9 @@ const projectDetails = {
 		stack: ['FastAPI', 'JavaScript', 'ATS scoring', 'LLM rewriter', 'React'],
 		notes: 'Kept the interface practical: immediate feedback, clear score explanation, and simple iteration loop.',
 		githubUrl: 'https://github.com/kshavnair/resume-analyse',
-		screenshots: []
+		screenshots: [
+			{ src: 'assets/resume-app-dashboard.png', caption: 'Resume Intelligence App - Upload interface with ATS scoring, target role selection, and AI generation options' }
+		]
 	},
 	marine: {
 		title: 'Marine Species eDNA Novelty Detection',
@@ -393,7 +395,9 @@ const projectDetails = {
 		stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'Streamlit', 'Data preprocessing'],
 		notes: 'Focused on model explainability and demo-ready storytelling so each result can be interpreted in context.',
 		githubUrl: 'https://github.com/kshavnair/marine-novelty',
-		screenshots: []
+		screenshots: [
+			{ src: 'assets/marine-species-dashboard.png', caption: 'Marine Species Discovery Platform - Interactive landing with Global Map, Advanced Search, and AI Species ID capabilities' }
+		]
 	}
 };
 
