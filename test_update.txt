@@ -1,0 +1,1 @@
+Update project descriptions: Resume FastAPI, Marine deployment details, platform capabilities
