@@ -297,7 +297,11 @@ const projectDetails = {
 		flowCaption: 'Pipeline from raw applicant records to explainable approval insights.',
 		stack: ['Python', 'Pandas', 'Scikit-learn', 'SHAP', 'Model explainability'],
 		notes: 'Balanced performance with interpretability so model behavior remains visible to users.',
-		githubUrl: 'https://github.com/kshavnair/credit-approval'
+		githubUrl: 'https://github.com/kshavnair/credit-approval',
+		screenshots: [
+			{ src: 'assets/credit-feature-importance.png', caption: 'Feature importance showing top predictive variables (age, employment, income)' },
+			{ src: 'assets/credit-roc-curves.png', caption: 'ROC curves for all models - Random Forest achieved 0.795 AUC' }
+		]
 	},
 	audio: {
 		title: 'Cocktail Party Problem - Speech Separation',
@@ -314,7 +318,8 @@ const projectDetails = {
 		flowCaption: 'Flow from mixed recording to reconstructed single-speaker tracks.',
 		stack: ['Python', 'NumPy', 'Librosa', 'Signal processing', 'Matplotlib'],
 		notes: 'Focused on preserving speech clarity while reducing bleed between separated sources.',
-		githubUrl: 'https://github.com/kshavnair/single-input-audio-separation'
+		githubUrl: 'https://github.com/kshavnair/single-input-audio-separation',
+		screenshots: []
 	},
 	rng: {
 		title: 'Secure Seeded Key Generator',
@@ -331,7 +336,8 @@ const projectDetails = {
 		flowCaption: 'From seed material to derived secure key output.',
 		stack: ['Python', 'SHA-256', 'hashlib', 'Randomness analysis', 'Cryptography'],
 		notes: 'The key idea is controlled seed usage with strong hashing to avoid weak deterministic output patterns.',
-		githubUrl: 'https://github.com/kshavnair/RNG-Generator'
+		githubUrl: 'https://github.com/kshavnair/RNG-Generator',
+		screenshots: []
 	},
 	telemetry: {
 		title: 'Telemetry Anomaly Detection',
@@ -348,7 +354,10 @@ const projectDetails = {
 		flowCaption: 'Operational flow for anomaly identification in telemetry streams.',
 		stack: ['Python', 'TensorFlow', 'PyTorch', 'Pandas', 'Time-series features'],
 		notes: 'Designed to detect unusual patterns while minimizing false alerts across noisy telemetry inputs.',
-		githubUrl: 'https://github.com/kshavnair/Satellite-telemetry-anomaly'
+		githubUrl: 'https://github.com/kshavnair/Satellite-telemetry-anomaly',
+		screenshots: [
+			{ src: 'assets/telemetry-anomaly-chart.png', caption: 'Anomaly detection visualization - 500 anomalies detected in satellite telemetry' }
+		]
 	},
 	resume: {
 		title: 'AI Resume Intelligence Web App',
@@ -365,7 +374,8 @@ const projectDetails = {
 		flowCaption: 'From uploaded resume to structured scoring and rewrite guidance.',
 		stack: ['FastAPI', 'JavaScript', 'ATS scoring', 'LLM rewriter', 'React'],
 		notes: 'Kept the interface practical: immediate feedback, clear score explanation, and simple iteration loop.',
-		githubUrl: 'https://github.com/kshavnair/resume-analyse'
+		githubUrl: 'https://github.com/kshavnair/resume-analyse',
+		screenshots: []
 	},
 	marine: {
 		title: 'Marine Species eDNA Novelty Detection',
@@ -382,7 +392,8 @@ const projectDetails = {
 		flowCaption: 'Flow from biological sequence to explanation-friendly output.',
 		stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'Streamlit', 'Data preprocessing'],
 		notes: 'Focused on model explainability and demo-ready storytelling so each result can be interpreted in context.',
-		githubUrl: 'https://github.com/kshavnair/marine-novelty'
+		githubUrl: 'https://github.com/kshavnair/marine-novelty',
+		screenshots: []
 	}
 };
 
@@ -395,6 +406,8 @@ const modalFlowCaption = document.getElementById('project-modal-flow-caption');
 const modalStack = document.getElementById('project-modal-stack');
 const modalNotes = document.getElementById('project-modal-notes');
 const modalLink = document.getElementById('project-modal-link');
+const modalScreenshotsSection = document.getElementById('project-screenshots-section');
+const modalScreenshots = document.getElementById('project-screenshots');
 
 const renderProject = (projectKey) => {
 	const project = projectDetails[projectKey];
@@ -426,6 +439,28 @@ const renderProject = (projectKey) => {
 		modalStack.appendChild(pill);
 	});
 
+	// Render screenshots
+	if (modalScreenshots && modalScreenshotsSection) {
+		if (project.screenshots && project.screenshots.length > 0) {
+			modalScreenshots.innerHTML = '';
+			project.screenshots.forEach((screenshot) => {
+				const img = document.createElement('img');
+				img.src = screenshot.src;
+				img.alt = screenshot.caption;
+				img.className = 'project-screenshot';
+				const figure = document.createElement('figure');
+				figure.className = 'project-screenshot-figure';
+				figure.appendChild(img);
+				const caption = document.createElement('figcaption');
+				caption.textContent = screenshot.caption;
+				figure.appendChild(caption);
+				modalScreenshots.appendChild(figure);
+			});
+			modalScreenshotsSection.style.display = 'block';
+		} else {
+			modalScreenshotsSection.style.display = 'none';
+		}
+	}
 
 	return true;
 };
