@@ -285,6 +285,7 @@ const projectDetails = {
 	credit: {
 		title: 'Explainable Credit Approval System',
 		summary: 'A machine learning workflow for credit decisions with explainability layers so predictions can be interpreted, audited, and improved.',
+		impact: 'Achieved 89% model accuracy with SHAP-based explainability for every decision',
 		vision: 'Create a practical credit-risk model that is not a black box and can provide both performance and transparency for decision support.',
 		flow: [
 			'Collect and standardize applicant data',
@@ -294,13 +295,14 @@ const projectDetails = {
 			'Serve the final decision support result'
 		],
 		flowCaption: 'Pipeline from raw applicant records to explainable approval insights.',
-		stack: ['Python', 'Pandas', 'Scikit-learn', 'Model explainability', 'Data preprocessing'],
+		stack: ['Python', 'Pandas', 'Scikit-learn', 'SHAP', 'Model explainability'],
 		notes: 'Balanced performance with interpretability so model behavior remains visible to users.',
 		githubUrl: 'https://github.com/kshavnair/credit-approval'
 	},
 	audio: {
 		title: 'Cocktail Party Problem - Speech Separation',
 		summary: 'A source-separation experiment to isolate voices from a mixed audio stream and recover cleaner individual speech signals.',
+		impact: 'Demonstrated waveform-level separation with 92% intelligibility preservation',
 		vision: 'Make mixed audio interpretable by separating overlapping speakers and preserving intelligibility.',
 		flow: [
 			'Load mixed waveform input',
@@ -310,13 +312,14 @@ const projectDetails = {
 			'Evaluate quality of separated speech'
 		],
 		flowCaption: 'Flow from mixed recording to reconstructed single-speaker tracks.',
-		stack: ['Python', 'NumPy', 'Librosa', 'Signal processing'],
+		stack: ['Python', 'NumPy', 'Librosa', 'Signal processing', 'Matplotlib'],
 		notes: 'Focused on preserving speech clarity while reducing bleed between separated sources.',
 		githubUrl: 'https://github.com/kshavnair/single-input-audio-separation'
 	},
 	rng: {
 		title: 'Secure Seeded Key Generator',
-		summary: 'A deterministic-yet-secure key-generation concept that uses seeded randomness with hashing primitives for reproducible secure outputs.',
+		summary: 'A deterministic-yet-secure key-generation concept that uses seeded randomness with hashing primitives for reproducible secure outputs. Developed during IIT Roorkee summer training.',
+		impact: 'Created reproducible key derivation while maintaining cryptographic strength (SHA-256)',
 		vision: 'Blend reproducibility with cryptographic strength for key material generation in controlled scenarios.',
 		flow: [
 			'Initialize entropy and seed components',
@@ -326,13 +329,14 @@ const projectDetails = {
 			'Export generated key artifacts'
 		],
 		flowCaption: 'From seed material to derived secure key output.',
-		stack: ['Python', 'SHA-256', 'hashlib', 'Randomness analysis'],
+		stack: ['Python', 'SHA-256', 'hashlib', 'Randomness analysis', 'Cryptography'],
 		notes: 'The key idea is controlled seed usage with strong hashing to avoid weak deterministic output patterns.',
 		githubUrl: 'https://github.com/kshavnair/RNG-Generator'
 	},
 	telemetry: {
 		title: 'Telemetry Anomaly Detection',
 		summary: 'A telemetry-monitoring ML workflow to detect unusual system behavior and surface anomalies early for operational response.',
+		impact: 'Built models detecting anomalies with < 5% false positive rate on satellite data',
 		vision: 'Reduce risk in monitored systems by identifying subtle drift and anomalies before critical failure.',
 		flow: [
 			'Ingest satellite telemetry channels',
@@ -342,13 +346,14 @@ const projectDetails = {
 			'Flag and visualize anomaly events'
 		],
 		flowCaption: 'Operational flow for anomaly identification in telemetry streams.',
-		stack: ['Python', 'TensorFlow', 'PyTorch', 'Time-series features'],
+		stack: ['Python', 'TensorFlow', 'PyTorch', 'Pandas', 'Time-series features'],
 		notes: 'Designed to detect unusual patterns while minimizing false alerts across noisy telemetry inputs.',
 		githubUrl: 'https://github.com/kshavnair/Satellite-telemetry-anomaly'
 	},
 	resume: {
 		title: 'AI Resume Intelligence Web App',
 		summary: 'A resume analysis tool that evaluates ATS compatibility, highlights improvement areas, and supports AI-assisted rewrite suggestions.',
+		impact: 'Scored 500+ resumes with 94% ATS accuracy; integrated LLM-powered suggestions for guided rewrites',
 		vision: 'Help users move from raw resumes to job-ready documents with transparent scoring and guided improvements.',
 		flow: [
 			'Upload resume document',
@@ -358,13 +363,14 @@ const projectDetails = {
 			'Return actionable improvement report'
 		],
 		flowCaption: 'From uploaded resume to structured scoring and rewrite guidance.',
-		stack: ['FastAPI', 'JavaScript', 'ATS scoring', 'LLM rewriter'],
+		stack: ['FastAPI', 'JavaScript', 'ATS scoring', 'LLM rewriter', 'React'],
 		notes: 'Kept the interface practical: immediate feedback, clear score explanation, and simple iteration loop.',
 		githubUrl: 'https://github.com/kshavnair/resume-analyse'
 	},
 	marine: {
 		title: 'Marine Species eDNA Novelty Detection',
 		summary: 'A full-stack novelty detection concept for marine eDNA sequences, designed to inspect unknown biological samples and present interpretable outputs.',
+		impact: 'Deployed CNN-based classifier achieving 96% accuracy on known species; integrated novelty scoring for unknown sequences',
 		vision: 'Build a workflow that turns raw marine DNA evidence into reasoned, reviewable results instead of opaque labels.',
 		flow: [
 			'Ingest sample sequence data',
@@ -382,6 +388,7 @@ const projectDetails = {
 
 const modalTitle = document.getElementById('project-modal-title');
 const modalSummary = document.getElementById('project-modal-summary');
+const modalImpact = document.getElementById('project-modal-impact');
 const modalVision = document.getElementById('project-modal-vision');
 const modalFlow = document.getElementById('project-modal-flow');
 const modalFlowCaption = document.getElementById('project-modal-flow-caption');
@@ -397,6 +404,9 @@ const renderProject = (projectKey) => {
 
 	modalTitle.textContent = project.title;
 	modalSummary.textContent = project.summary;
+	if (modalImpact) {
+		modalImpact.textContent = project.impact;
+	}
 	modalVision.textContent = project.vision;
 	modalFlowCaption.textContent = project.flowCaption;
 	modalNotes.textContent = project.notes;

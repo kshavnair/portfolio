@@ -197,6 +197,15 @@ html[data-theme='light'] .theme-toggle-thumb {
   font-style: italic;
 }
 
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0.75rem 0 1rem 0;
+  line-height: 1.6;
+  font-style: normal;
+}
+
 .hero-links {
   display: flex;
   flex-direction: row;
@@ -254,9 +263,35 @@ html[data-theme='light'] .theme-toggle-thumb {
 }
 
 .stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.stack-icon {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.stack-icon:hover {
+  opacity: 1;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.15);
+}
+
+.stack-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .stack-pill {
@@ -389,6 +424,14 @@ html[data-theme='light'] .theme-toggle-thumb {
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.exp-impact {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  font-style: italic;
 }
 
 .exp-tech {
@@ -551,6 +594,18 @@ html[data-theme='light'] .theme-toggle-thumb {
   color: var(--text-muted);
   max-width: 70ch;
   margin-bottom: 1.75rem;
+}
+
+.project-impact {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 600;
+  max-width: 70ch;
+  margin-bottom: 1.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(201, 169, 98, 0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
 }
 
 .project-detail-grid {
