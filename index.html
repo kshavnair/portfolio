@@ -18,11 +18,18 @@
 </head>
 <body>
   <nav class="nav">
-    <a href="#about" class="cursor-target">About</a>
-    <a href="#tech-stack" class="cursor-target">Tech Stack</a>
-    <a href="#education" class="cursor-target">Education</a>
-    <a href="#experiments" class="cursor-target">Experiments</a>
-    <a href="#certifications" class="cursor-target">Certifications</a>
+    <button id="nav-toggle" class="nav-toggle cursor-target" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="#about" class="cursor-target">About</a>
+      <a href="#tech-stack" class="cursor-target">Tech Stack</a>
+      <a href="#education" class="cursor-target">Education</a>
+      <a href="#experiments" class="cursor-target">Projects</a>
+      <a href="#certifications" class="cursor-target">Certifications</a>
+      <button type="button" id="resume-button" class="btn btn-with-icon cursor-target nav-resume" aria-label="Open resume options">
+        <span>Resume</span>
+        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
   </nav>
 
   <button type="button" class="theme-toggle cursor-target" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
@@ -235,6 +242,29 @@
           <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </a>
         <button type="button" class="btn btn-secondary cursor-target" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume view/download modal -->
+  <div class="resume-modal project-modal" id="resume-modal" hidden>
+    <div class="project-modal-backdrop" data-close-resume></div>
+    <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+      <button type="button" class="project-modal-close cursor-target" aria-label="Close resume modal" data-close-resume>&times;</button>
+      <h3 id="resume-modal-title">Resume</h3>
+      <p class="project-summary">View or download a copy of my CV. The file will open in a new tab for viewing; use Download to save a local copy.</p>
+      <div id="resume-actions" style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a id="resume-view-link" class="btn btn-with-icon cursor-target" target="_blank" rel="noopener noreferrer">
+          <span>View CV</span>
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <a id="resume-download-link" class="btn btn-with-icon cursor-target" download>
+          <span>Download CV</span>
+          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="project-actions">
+        <button type="button" class="btn btn-secondary cursor-target" data-close-resume>Close</button>
       </div>
     </div>
   </div>

@@ -558,3 +558,78 @@ if (window.gsap && typeof createTargetCursor === 'function') {
 		parallaxOn: false
 	});
 }
+
+// Responsive nav toggle
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (navToggle && navLinks) {
+	navToggle.addEventListener('click', () => {
+		const isOpen = navLinks.classList.toggle('is-open');
+		navToggle.setAttribute('aria-expanded', String(isOpen));
+	});
+
+	// Close when a link is clicked
+	navLinks.querySelectorAll('a, button').forEach((el) => {
+		el.addEventListener('click', () => {
+			navLinks.classList.remove('is-open');
+			navToggle.setAttribute('aria-expanded', 'false');
+		});
+	});
+}
+
+// Resume view/download (no upload)
+// Use the CV copied into the site's assets folder for reliable deployment.
+const RESUME_PATH = 'assets/CV.pdf';
+const resumeButton = document.getElementById('resume-button');
+const resumeModal = document.getElementById('resume-modal');
+const resumeViewLink = document.getElementById('resume-view-link');
+const resumeDownloadLink = document.getElementById('resume-download-link');
+
+const openResumeModal = () => {
+	if (!resumeModal) return;
+	// set links to the resume asset; user can replace the file in assets/
+	if (resumeViewLink) resumeViewLink.href = RESUME_PATH;
+	if (resumeDownloadLink) {
+		resumeDownloadLink.href = RESUME_PATH;
+		resumeDownloadLink.setAttribute('download', 'Keshav_Nair_CV.pdf');
+	}
+	resumeModal.hidden = false;
+	requestAnimationFrame(() => {
+		resumeModal.classList.add('is-open');
+		document.body.classList.add('modal-open');
+	});
+};
+
+const closeResumeModal = () => {
+	if (!resumeModal) return;
+	resumeModal.classList.remove('is-open');
+	document.body.classList.remove('modal-open');
+	window.setTimeout(() => {
+		if (!resumeModal.classList.contains('is-open')) {
+			resumeModal.hidden = true;
+		}
+	}, 220);
+};
+
+if (resumeButton && resumeModal) {
+	resumeButton.addEventListener('click', () => {
+		openResumeModal();
+	});
+
+	// Close handlers
+	const resumeCloseButtons = resumeModal ? resumeModal.querySelectorAll('[data-close-resume]') : [];
+	resumeCloseButtons.forEach((b) => b.addEventListener('click', closeResumeModal));
+
+	// close on Escape
+	document.addEventListener('keydown', (ev) => {
+		if (ev.key === 'Escape' && resumeModal && !resumeModal.hidden) {
+			closeResumeModal();
+		}
+	});
+
+	// close when backdrop clicked
+	if (resumeModal) {
+		const resumeBackdrop = resumeModal.querySelector('.project-modal-backdrop');
+		resumeBackdrop?.addEventListener('click', closeResumeModal);
+	}
+}
