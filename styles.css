@@ -182,15 +182,16 @@ body {
   right: 2rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
-  padding: 0.25rem 0.35rem;
+  min-width: 44px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface);
   color: var(--text-muted);
-  width: 3.4rem;
-  justify-content: center;
   z-index: 101;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
 }
 
 .theme-toggle:hover {
@@ -198,30 +199,44 @@ body {
   border-color: var(--accent);
 }
 
-.theme-toggle-track {
-  position: relative;
-  width: 2.55rem;
-  height: 1.28rem;
-  border-radius: 999px;
-  background: rgba(201, 169, 98, 0.18);
-  border: 1px solid var(--border);
-  transition: background 0.2s, border-color 0.2s;
+.theme-toggle-svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.35s ease-in-out;
 }
 
-.theme-toggle-thumb {
-  position: absolute;
-  top: 50%;
-  left: 0.16rem;
-  width: 0.86rem;
-  height: 0.86rem;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateY(-50%);
-  transition: transform 0.2s ease;
+html[data-theme='light'] .theme-toggle-svg {
+  transform: rotate(-180deg);
 }
 
-html[data-theme='light'] .theme-toggle-thumb {
-  transform: translate(1.28rem, -50%);
+.theme-clip-path {
+  transition: y 0.35s ease-in-out, x 0.35s ease-in-out;
+}
+
+html[data-theme='light'] .theme-clip-path {
+  y: 14;
+  x: -11;
+}
+
+.theme-circle {
+  transition: r 0.35s ease-in-out;
+  r: 8;
+}
+
+html[data-theme='light'] .theme-circle {
+  r: 10;
+}
+
+.theme-rays {
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  opacity: 1;
+  transform-origin: 16px 16px;
+  transform: scale(1);
+}
+
+html[data-theme='light'] .theme-rays {
+  opacity: 0;
+  transform: scale(0.5);
 }
 
 .hero {
