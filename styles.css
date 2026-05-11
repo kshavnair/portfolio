@@ -43,7 +43,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 16px;
   min-height: 100vh;
   position: relative;
   isolation: isolate;
@@ -277,19 +277,19 @@ html[data-theme='light'] .theme-rays {
 }
 
 .hero h1 {
-  font-size: 2.75rem;
+  font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: 0.35rem;
 }
 
 .tagline {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-style: italic;
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text);
   max-width: 600px;
   margin: 0.75rem 0 1rem 0;
@@ -340,7 +340,7 @@ html[data-theme='light'] .theme-rays {
 }
 
 .section h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 2rem;
   color: var(--accent);
@@ -349,7 +349,7 @@ html[data-theme='light'] .theme-rays {
 }
 
 .about-text {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   line-height: 1.8;
 }
 
@@ -423,7 +423,7 @@ html[data-theme='light'] .theme-rays {
 }
 
 .experience-item h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
@@ -509,7 +509,7 @@ html[data-theme='light'] .theme-rays {
 }
 
 .exp-card h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   line-height: 1.4;
@@ -676,7 +676,7 @@ html[data-theme='light'] .theme-rays {
 }
 
 .project-modal h3 {
-  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
   margin-bottom: 0.9rem;
 }
 
