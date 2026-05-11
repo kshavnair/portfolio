@@ -559,6 +559,55 @@ if (window.gsap && typeof createTargetCursor === 'function') {
 	});
 }
 
+// Dock-style navbar magnification
+const dockPanel = document.getElementById('dock-panel');
+const dockItems = dockPanel ? Array.from(dockPanel.querySelectorAll('[data-dock-item]')) : [];
+const dockMaxDistance = 180;
+const dockMaxScale = 1;
+
+if (dockPanel && dockItems.length > 0 && window.matchMedia('(hover: hover)').matches) {
+	const resetDockItems = () => {
+		dockItems.forEach((item) => {
+			item.style.setProperty('--dock-scale', '1');
+			item.style.setProperty('--dock-translate', '0px');
+			item.classList.remove('is-active');
+		});
+	};
+
+	const updateDockItems = (clientX) => {
+		const panelRect = dockPanel.getBoundingClientRect();
+		dockItems.forEach((item) => {
+			const rect = item.getBoundingClientRect();
+			const itemCenter = rect.left + rect.width / 2;
+			const distance = Math.abs(clientX - itemCenter);
+			const proximity = Math.max(0, dockMaxDistance - distance);
+			const progress = proximity / dockMaxDistance;
+			const scale = 1 + progress * (dockMaxScale - 1);
+			const lift = 0;
+			item.style.setProperty('--dock-scale', scale.toFixed(3));
+			item.style.setProperty('--dock-translate', `${lift.toFixed(1)}px`);
+			item.classList.toggle('is-active', distance < rect.width / 1.25);
+		});
+		dockPanel.style.setProperty('--dock-pointer-x', `${clientX - panelRect.left}px`);
+	};
+
+	dockPanel.addEventListener('mousemove', (event) => {
+		updateDockItems(event.clientX);
+	});
+
+	dockPanel.addEventListener('mouseleave', resetDockItems);
+	dockItems.forEach((item) => {
+		item.addEventListener('focus', () => {
+			item.style.setProperty('--dock-scale', '1');
+			item.style.setProperty('--dock-translate', '0px');
+			item.classList.add('is-active');
+		});
+		item.addEventListener('blur', () => {
+			resetDockItems();
+		});
+	});
+}
+
 // Responsive nav toggle
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.querySelector('.nav-links');
