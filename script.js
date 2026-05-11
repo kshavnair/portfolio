@@ -430,9 +430,15 @@ const renderProject = (projectKey) => {
 	modalLink.href = project.githubUrl;
 
 	modalFlow.innerHTML = '';
-	project.flow.forEach((step) => {
+	project.flow.forEach((step, index) => {
 		const li = document.createElement('li');
-		li.textContent = step;
+		const stepNumber = document.createElement('span');
+		const stepText = document.createElement('span');
+		stepNumber.className = 'project-flow-step';
+		stepNumber.textContent = String(index + 1);
+		stepText.className = 'project-flow-text';
+		stepText.textContent = step;
+		li.append(stepNumber, stepText);
 		modalFlow.appendChild(li);
 	});
 
