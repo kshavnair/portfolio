@@ -9,6 +9,8 @@
   --panel-bg: rgba(26, 26, 26, 0.98);
   --panel-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
   --overlay: rgba(8, 8, 8, 0.78);
+  --project-number-color: rgba(201, 169, 98, 0.24);
+  --project-number-hover-color: rgba(201, 169, 98, 0.42);
   --cursor-filter: none;
   --cursor-default: url("assets/cursors/cursor-default.png") 5 5;
   --cursor-pointer: url("assets/cursors/cursor-pointer.png") 7 4;
@@ -25,6 +27,8 @@
   --panel-bg: rgba(255, 250, 243, 0.98);
   --panel-shadow: 0 24px 80px rgba(90, 61, 26, 0.16);
   --overlay: rgba(255, 250, 243, 0.72);
+  --project-number-color: rgba(116, 73, 16, 0.2);
+  --project-number-hover-color: rgba(116, 73, 16, 0.36);
 }
 
 * {
@@ -629,6 +633,7 @@ html[data-theme='light'] .theme-rays {
 .exp-card:nth-child(4) { grid-column: span 7; }
 .exp-card:nth-child(5) { grid-column: span 6; }
 .exp-card:nth-child(6) { grid-column: span 6; }
+.exp-card:nth-child(7) { grid-column: span 12; }
 
 .exp-card {
   position: relative;
@@ -670,14 +675,14 @@ html[data-theme='light'] .theme-rays {
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: rgba(201, 169, 98, 0.07);
+  color: var(--project-number-color);
   pointer-events: none;
   transition: color 0.3s ease;
   z-index: 0;
 }
 
 .exp-card:hover::after {
-  color: rgba(201, 169, 98, 0.14);
+  color: var(--project-number-hover-color);
 }
 
 /* Top edge glow line on hover */
@@ -1138,10 +1143,13 @@ html[data-theme='light'] .theme-rays {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(201, 169, 98, 0.14);
-  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border: 0.5px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--text);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
 }
 
 .project-flow-text {
@@ -1216,6 +1224,31 @@ html[data-theme='light'] .theme-rays {
   gap: 0.85rem;
   flex-wrap: wrap;
   margin-top: 1.5rem;
+}
+
+.project-auth-callout {
+  margin-top: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.project-auth-callout h4 {
+  margin: 0 0 0.35rem 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-auth-callout p {
+  margin: 0;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
 }
 
 body.modal-open {

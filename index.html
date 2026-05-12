@@ -124,8 +124,13 @@
           <div class="exp-tech">Python · FastAPI · Streamlit · React · PyTorch</div>
           <p class="exp-summary">CNN-based classifier with novelty scoring for unknown marine eDNA sequences.</p>
         </button>
+        <button type="button" class="exp-card exp-card-button cursor-target" data-project="crm" aria-haspopup="dialog" aria-controls="project-modal">
+          <h3>Enterprise CRM Platform</h3>
+          <div class="exp-tech">Next.js · Supabase · Role-based access</div>
+          <p class="exp-summary">Deployed internal CRM with role-based modules for sales, service, and admin operations.</p>
+        </button>
       </div>
-      <a href="https://github.com/kshavnair" class="btn" target="_blank" rel="noopener noreferrer">View all on GitHub</a>
+      <a href="https://github.com/kshavnair" class="btn cursor-target" target="_blank" rel="noopener noreferrer">View all on GitHub</a>
     </section>
 
     <section id="certifications" class="section">
@@ -178,9 +183,20 @@
       </div>
 
       <div class="project-actions">
+        <a href="#" class="btn cursor-target" target="_blank" rel="noopener noreferrer" id="project-modal-live-link" style="display: none;">View Live</a>
         <a href="#" class="btn cursor-target" target="_blank" rel="noopener noreferrer" id="project-modal-link">View GitHub</a>
         <button type="button" class="btn btn-secondary cursor-target" data-close-modal>Close</button>
       </div>
+
+      <section class="project-auth-callout" id="project-auth-callout" style="display: none;">
+        <h4 id="project-auth-title">Login Access</h4>
+        <p id="project-auth-details"></p>
+      </section>
+
+      <section class="project-screenshots-section" id="project-screenshots-section" style="display: none;">
+        <h4>Screenshots</h4>
+        <div class="project-screenshots" id="project-screenshots"></div>
+      </section>
     </div>
   </div>
 

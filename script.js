@@ -398,6 +398,27 @@ const projectDetails = {
 		screenshots: [
 			{ src: 'assets/marine-species-dashboard.png', caption: 'Marine Species Discovery Platform - Interactive landing with Global Map, Advanced Search, and AI Species ID capabilities' }
 		]
+	},
+	crm: {
+		title: 'Enterprise CRM Platform',
+		summary: 'A production-style CRM for internal teams with role-based access, protected dashboards, and operational modules for sales and service workflows.',
+		impact: 'Deployed to Vercel with authenticated role-based access for admin, sales, and service teams',
+		vision: 'Unify lead tracking, customer lifecycle, machine management, and service operations into one fast internal system.',
+		flow: [
+			'Sign in through Supabase Auth',
+			'Route users by role (admin, sales, service)',
+			'Manage leads, accounts, machines, tickets, and parts',
+			'Search client history and operational records',
+			'Execute day-to-day CRM workflows from a single dashboard'
+		],
+		flowCaption: 'End-to-end path from secure login to role-scoped CRM operations.',
+		stack: ['Next.js 16', 'TypeScript', 'Supabase Auth', 'PostgreSQL', 'Role-based access control'],
+		notes: 'Live site: https://crm-kshavnair.vercel.app | Login: 1234@ex.com | Password: 12345678',
+		liveUrl: 'https://crm-kshavnair.vercel.app/login',
+		authTitle: 'Important Login Credentials',
+		authDetails: 'Email: 1234@ex.com | Password: 12345678 | Auth: Supabase role-based access (admin, sales, service)',
+		githubUrl: 'https://github.com/kshavnair/CRM-for-company-management',
+		screenshots: []
 	}
 };
 
@@ -409,7 +430,11 @@ const modalFlow = document.getElementById('project-modal-flow');
 const modalFlowCaption = document.getElementById('project-modal-flow-caption');
 const modalStack = document.getElementById('project-modal-stack');
 const modalNotes = document.getElementById('project-modal-notes');
+const modalLiveLink = document.getElementById('project-modal-live-link');
 const modalLink = document.getElementById('project-modal-link');
+const modalAuthCallout = document.getElementById('project-auth-callout');
+const modalAuthTitle = document.getElementById('project-auth-title');
+const modalAuthDetails = document.getElementById('project-auth-details');
 const modalScreenshotsSection = document.getElementById('project-screenshots-section');
 const modalScreenshots = document.getElementById('project-screenshots');
 
@@ -428,6 +453,25 @@ const renderProject = (projectKey) => {
 	modalFlowCaption.textContent = project.flowCaption;
 	modalNotes.textContent = project.notes;
 	modalLink.href = project.githubUrl;
+
+	if (modalLiveLink) {
+		if (project.liveUrl) {
+			modalLiveLink.href = project.liveUrl;
+			modalLiveLink.style.display = 'inline-flex';
+		} else {
+			modalLiveLink.style.display = 'none';
+		}
+	}
+
+	if (modalAuthCallout && modalAuthTitle && modalAuthDetails) {
+		if (project.authDetails) {
+			modalAuthTitle.textContent = project.authTitle || 'Login Access';
+			modalAuthDetails.textContent = project.authDetails;
+			modalAuthCallout.style.display = 'block';
+		} else {
+			modalAuthCallout.style.display = 'none';
+		}
+	}
 
 	modalFlow.innerHTML = '';
 	project.flow.forEach((step, index) => {
