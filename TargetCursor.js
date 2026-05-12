@@ -288,12 +288,22 @@ const createTargetCursor = ({
     gsap.to(wrapper, { scale: 1, duration: 0.2 });
   };
 
+  const resetCursorPressState = () => {
+    mouseUpHandler();
+  };
+
   // Add event listeners
   window.addEventListener('mousemove', moveCursor);
   window.addEventListener('mouseover', enterHandler, { passive: true });
   window.addEventListener('scroll', scrollHandler, { passive: true });
   window.addEventListener('mousedown', mouseDownHandler);
   window.addEventListener('mouseup', mouseUpHandler);
+  window.addEventListener('pointerup', resetCursorPressState);
+  window.addEventListener('pointercancel', resetCursorPressState);
+  window.addEventListener('blur', resetCursorPressState);
+  document.addEventListener('mouseup', mouseUpHandler, true);
+  document.addEventListener('click', resetCursorPressState, true);
+  window.addEventListener('cursor:reset', resetActiveTarget);
 
   // Cleanup function
   const cleanup = () => {
@@ -303,6 +313,11 @@ const createTargetCursor = ({
     window.removeEventListener('scroll', scrollHandler);
     window.removeEventListener('mousedown', mouseDownHandler);
     window.removeEventListener('mouseup', mouseUpHandler);
+    window.removeEventListener('pointerup', resetCursorPressState);
+    window.removeEventListener('pointercancel', resetCursorPressState);
+    window.removeEventListener('blur', resetCursorPressState);
+    document.removeEventListener('mouseup', mouseUpHandler, true);
+    document.removeEventListener('click', resetCursorPressState, true);
 
     if (state.activeTarget) {
       cleanupTarget(state.activeTarget);
@@ -324,5 +339,64 @@ const createTargetCursor = ({
     state.activeStrength = 0;
   };
 
+  function resetActiveTarget() {
+    if (state.resumeTimeout) {
+      clearTimeout(state.resumeTimeout);
+      state.resumeTimeout = null;
+    }
+
+    gsap.ticker.remove(tickerFn);
+    state.isActive = false;
+    state.targetCornerPositions = null;
+    gsap.set(state, { activeStrength: 0, overwrite: true });
+
+    if (state.activeTarget) {
+      cleanupTarget(state.activeTarget);
+    }
+
+    state.activeTarget = null;
+
+    cornerElements.forEach(corner => gsap.killTweensOf(corner));
+    const { cornerSize } = constants;
+    const positions = [
+      { x: -cornerSize * 1.5, y: -cornerSize * 1.5 },
+      { x: cornerSize * 0.5, y: -cornerSize * 1.5 },
+      { x: cornerSize * 0.5, y: cornerSize * 0.5 },
+      { x: -cornerSize * 1.5, y: cornerSize * 0.5 }
+    ];
+
+    const tl = gsap.timeline();
+    cornerElements.forEach((corner, index) => {
+      tl.to(
+        corner,
+        {
+          x: positions[index].x,
+          y: positions[index].y,
+          duration: 0.3,
+          ease: 'power3.out'
+        },
+        0
+      );
+    });
+
+    mouseUpHandler();
+
+    if (state.spinTl) {
+      const currentRotation = gsap.getProperty(wrapper, 'rotation');
+      const normalizedRotation = currentRotation % 360;
+      state.spinTl.kill();
+      state.spinTl = gsap
+        .timeline({ repeat: -1 })
+        .to(wrapper, { rotation: '+=360', duration: spinDuration, ease: 'none' });
+      gsap.to(wrapper, {
+        rotation: normalizedRotation + 360,
+        duration: spinDuration * (1 - normalizedRotation / 360),
+        ease: 'none',
+        onComplete: () => {
+          state.spinTl?.restart();
+        }
+      });
+    }
+  }
   return { cleanup };
 };

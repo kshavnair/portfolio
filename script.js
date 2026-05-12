@@ -480,6 +480,7 @@ const openModal = () => {
 		return;
 	}
 
+ window.dispatchEvent(new Event('cursor:reset'));
 	modal.hidden = false;
 	requestAnimationFrame(() => {
 		modal.classList.add('is-open');
@@ -642,6 +643,7 @@ const resumeDownloadLink = document.getElementById('resume-download-link');
 
 const openResumeModal = () => {
 	if (!resumeModal) return;
+	window.dispatchEvent(new Event('cursor:reset'));
 	// set links to the resume asset; user can replace the file in assets/
 	if (resumeViewLink) resumeViewLink.href = RESUME_PATH;
 	if (resumeDownloadLink) {

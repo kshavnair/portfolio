@@ -62,21 +62,21 @@
     <section id="tech-stack" class="section">
       <h2>Tech Stack</h2>
       <div class="stack-grid">
-        <div class="stack-pill" title="Python"><img src="https://cdn.simpleicons.org/python/e8e6e3" alt="Python"></div>
-        <div class="stack-pill" title="C"><img src="https://cdn.simpleicons.org/c/e8e6e3" alt="C"></div>
-        <div class="stack-pill" title="C++"><img src="https://cdn.simpleicons.org/cplusplus/e8e6e3" alt="C++"></div>
-        <div class="stack-pill" title="JavaScript"><img src="https://cdn.simpleicons.org/javascript/e8e6e3" alt="JavaScript"></div>
-        <div class="stack-pill" title="NumPy"><img src="https://cdn.simpleicons.org/numpy/e8e6e3" alt="NumPy"></div>
-        <div class="stack-pill" title="Pandas"><img src="https://cdn.simpleicons.org/pandas/e8e6e3" alt="Pandas"></div>
-        <div class="stack-pill" title="Matplotlib"><img src="https://cdn.simpleicons.org/matplotlib/e8e6e3" alt="Matplotlib"></div>
-        <div class="stack-pill" title="Scikit-learn"><img src="https://cdn.simpleicons.org/scikitlearn/e8e6e3" alt="Scikit-learn"></div>
-        <div class="stack-pill" title="TensorFlow"><img src="https://cdn.simpleicons.org/tensorflow/e8e6e3" alt="TensorFlow"></div>
-        <div class="stack-pill" title="PyTorch"><img src="https://cdn.simpleicons.org/pytorch/e8e6e3" alt="PyTorch"></div>
-        <div class="stack-pill" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/e8e6e3" alt="FastAPI"></div>
-        <div class="stack-pill" title="React"><img src="https://cdn.simpleicons.org/react/e8e6e3" alt="React"></div>
-        <div class="stack-pill" title="SQL"><img src="https://cdn.simpleicons.org/sqlite/e8e6e3" alt="SQL"></div>
-        <div class="stack-pill" title="Git"><img src="https://cdn.simpleicons.org/git/e8e6e3" alt="Git"></div>
-        <div class="stack-pill" title="GitHub"><img src="https://cdn.simpleicons.org/github/e8e6e3" alt="GitHub"></div>
+        <div class="stack-pill cursor-target" title="Python"><img src="https://cdn.simpleicons.org/python/e8e6e3" alt="Python"></div>
+        <div class="stack-pill cursor-target" title="C"><img src="https://cdn.simpleicons.org/c/e8e6e3" alt="C"></div>
+        <div class="stack-pill cursor-target" title="C++"><img src="https://cdn.simpleicons.org/cplusplus/e8e6e3" alt="C++"></div>
+        <div class="stack-pill cursor-target" title="JavaScript"><img src="https://cdn.simpleicons.org/javascript/e8e6e3" alt="JavaScript"></div>
+        <div class="stack-pill cursor-target" title="NumPy"><img src="https://cdn.simpleicons.org/numpy/e8e6e3" alt="NumPy"></div>
+        <div class="stack-pill cursor-target" title="Pandas"><img src="https://cdn.simpleicons.org/pandas/e8e6e3" alt="Pandas"></div>
+        <div class="stack-pill cursor-target" title="Matplotlib"><img src="assets/matplotlib.svg" alt="Matplotlib"></div>
+        <div class="stack-pill cursor-target" title="Scikit-learn"><img src="https://cdn.simpleicons.org/scikitlearn/e8e6e3" alt="Scikit-learn"></div>
+        <div class="stack-pill cursor-target" title="TensorFlow"><img src="https://cdn.simpleicons.org/tensorflow/e8e6e3" alt="TensorFlow"></div>
+        <div class="stack-pill cursor-target" title="PyTorch"><img src="https://cdn.simpleicons.org/pytorch/e8e6e3" alt="PyTorch"></div>
+        <div class="stack-pill cursor-target" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/e8e6e3" alt="FastAPI"></div>
+        <div class="stack-pill cursor-target" title="React"><img src="https://cdn.simpleicons.org/react/e8e6e3" alt="React"></div>
+        <div class="stack-pill cursor-target" title="SQL"><img src="https://cdn.simpleicons.org/sqlite/e8e6e3" alt="SQL"></div>
+        <div class="stack-pill cursor-target" title="Git"><img src="https://cdn.simpleicons.org/git/e8e6e3" alt="Git"></div>
+        <div class="stack-pill cursor-target" title="GitHub"><img src="https://cdn.simpleicons.org/github/e8e6e3" alt="GitHub"></div>
       </div>
     </section>
 
@@ -147,7 +147,7 @@
   <div class="project-modal" id="project-modal" hidden>
     <div class="project-modal-backdrop" data-close-modal></div>
     <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-summary">
-      <button type="button" class="project-modal-close" aria-label="Close project details" data-close-modal>&times;</button>
+      <button type="button" class="project-modal-close cursor-target" aria-label="Close project details" data-close-modal>&times;</button>
       <p class="project-kicker">Featured case study</p>
       <h3 id="project-modal-title"></h3>
       <p id="project-modal-summary" class="project-summary"></p>
@@ -178,8 +178,23 @@
       </div>
 
       <div class="project-actions">
-        <a href="#" class="btn" target="_blank" rel="noopener noreferrer" id="project-modal-link">View GitHub</a>
-        <button type="button" class="btn btn-secondary" data-close-modal>Close</button>
+        <a href="#" class="btn cursor-target" target="_blank" rel="noopener noreferrer" id="project-modal-link">View GitHub</a>
+        <button type="button" class="btn btn-secondary cursor-target" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="resume-modal" hidden>
+    <div class="project-modal-backdrop" data-close-resume></div>
+    <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" aria-describedby="resume-modal-summary">
+      <button type="button" class="project-modal-close cursor-target" aria-label="Close resume dialog" data-close-resume>&times;</button>
+      <p class="project-kicker">Resume</p>
+      <h3 id="resume-modal-title">View or download my resume</h3>
+      <p id="resume-modal-summary" class="project-summary">Open the PDF in a new tab or download a local copy from the dock.</p>
+
+      <div class="project-actions">
+        <a href="#" class="btn cursor-target" target="_blank" rel="noopener noreferrer" id="resume-view-link">View Resume</a>
+        <a href="#" class="btn btn-secondary cursor-target" target="_blank" rel="noopener noreferrer" id="resume-download-link">Download PDF</a>
       </div>
     </div>
   </div>
@@ -235,6 +250,12 @@
             </svg>
           </span>
           <span class="dock-label">Theme</span>
+        </button>
+        <button type="button" class="dock-item cursor-target" data-dock-item id="resume-button" aria-label="Open resume">
+          <span class="dock-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+          </span>
+          <span class="dock-label">Resume</span>
         </button>
       </div>
     </div>

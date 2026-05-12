@@ -555,12 +555,28 @@ html[data-theme='light'] .theme-rays {
 
 .stack-pill:hover {
   border-color: var(--accent);
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 24px rgba(201, 169, 98, 0.15);
+  transform: none;
+  box-shadow: none;
 }
 
 .stack-pill:hover img {
   filter: grayscale(0) brightness(1);
+}
+
+:root[data-theme='light'] .stack-pill img {
+  filter: grayscale(1) brightness(0.58) contrast(1.25);
+}
+
+:root[data-theme='light'] .stack-pill:hover img {
+  filter: grayscale(0) brightness(0.92) contrast(1.05);
+}
+
+.stack-pill.cursor-target {
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.stack-pill.cursor-target:hover {
+  border-color: var(--accent);
 }
 
 .experience-list {
