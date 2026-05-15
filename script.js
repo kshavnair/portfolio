@@ -1,5 +1,18 @@
 document.querySelector('.year').textContent = new Date().getFullYear();
 
+// Initialize TextType for landing subtitle
+const landingTextTypeElement = document.getElementById('landing-text-type');
+if (landingTextTypeElement && typeof TextType !== 'undefined') {
+	window.landingTextType = new TextType(landingTextTypeElement, {
+		texts: ['Building stuff', 'Shipping things', 'Debugging Reality'],
+		typingSpeed: 80,
+		deletingSpeed: 40,
+		pauseDuration: 2000,
+		loop: true,
+		showCursor: true,
+		cursorCharacter: '|'
+	});
+}
 const splashCanvas = document.getElementById('splash-canvas');
 const splashContext = splashCanvas ? splashCanvas.getContext('2d') : null;
 const splashParticles = [];
@@ -733,4 +746,66 @@ if (resumeButton && resumeModal) {
 		const resumeBackdrop = resumeModal.querySelector('.project-modal-backdrop');
 		resumeBackdrop?.addEventListener('click', closeResumeModal);
 	}
+}
+
+// Landing page scroll indicator animation
+const landingScrollIndicator = document.querySelector('.landing-scroll-indicator');
+const landingExploreButton = document.querySelector('.landing-cta');
+
+const runExploreReveal = () => {
+	const aboutSection = document.getElementById('about');
+	if (!aboutSection) return;
+
+	if (typeof gsap === 'undefined') {
+		aboutSection.scrollIntoView({ behavior: 'smooth' });
+		return;
+	}
+
+	const revealTargets = Array.from(document.querySelectorAll('main .section'));
+	if (revealTargets.length === 0) {
+		aboutSection.scrollIntoView({ behavior: 'smooth' });
+		return;
+	}
+
+	gsap.killTweensOf(revealTargets);
+	gsap.set(revealTargets, { autoAlpha: 0, y: 28 });
+	aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	window.setTimeout(() => {
+		gsap.to(revealTargets, {
+			autoAlpha: 1,
+			y: 0,
+			duration: 0.75,
+			stagger: 0.1,
+			ease: 'power3.out'
+		});
+	}, 280);
+};
+
+if (landingExploreButton) {
+	landingExploreButton.addEventListener('click', (event) => {
+		event.preventDefault();
+		runExploreReveal();
+	});
+}
+
+if (landingScrollIndicator) {
+	const handleLandingScroll = () => {
+		const scrolled = window.scrollY;
+		if (scrolled > window.innerHeight * 0.5) {
+			landingScrollIndicator.style.opacity = '0';
+			landingScrollIndicator.style.pointerEvents = 'none';
+		} else {
+			landingScrollIndicator.style.opacity = '1';
+			landingScrollIndicator.style.pointerEvents = 'auto';
+		}
+	};
+	
+	window.addEventListener('scroll', handleLandingScroll);
+	
+	// Add smooth scroll behavior to the scroll indicator
+	landingScrollIndicator.style.cursor = 'pointer';
+	landingScrollIndicator.addEventListener('click', (event) => {
+		event.preventDefault();
+		runExploreReveal();
+	});
 }
